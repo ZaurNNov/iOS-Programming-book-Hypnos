@@ -52,16 +52,16 @@
     // draw line with path
     [path stroke];
     
-    
+    //////////////////////////////////////
     // Bronze Challenge: Draw an Image
     
     UIImage *logoImage = [UIImage imageNamed:@"logo.png"];
-    // Image bounds - is 1/3 origin bounds
+    // Image bounds - is 1/4 origin bounds
     CGRect logoImageRect;
     logoImageRect.origin.x = bounds.origin.x + bounds.size.width / 4;
     logoImageRect.origin.y = bounds.origin.y + bounds.size.height / 4;
     
-    // Image size = 1/3 origin bounds
+    // Image size = 1/2 origin bounds
     logoImageRect.size.width = bounds.size.width / 2;
     logoImageRect.size.height = bounds.size.height / 2;
     
