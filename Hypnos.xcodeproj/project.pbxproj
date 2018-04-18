@@ -12,6 +12,7 @@
 		CE46C0CA208758A700F06172 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE46C0C8208758A700F06172 /* LaunchScreen.storyboard */; };
 		CE46C0CD208758A700F06172 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE46C0CC208758A700F06172 /* main.m */; };
 		CE46C0D520875EF000F06172 /* HypnosisView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE46C0D420875EF000F06172 /* HypnosisView.m */; };
+		CE46C0D72087737500F06172 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CE46C0D62087737500F06172 /* logo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		CE46C0CC208758A700F06172 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CE46C0D320875EF000F06172 /* HypnosisView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HypnosisView.h; sourceTree = "<group>"; };
 		CE46C0D420875EF000F06172 /* HypnosisView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HypnosisView.m; sourceTree = "<group>"; };
+		CE46C0D62087737500F06172 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				CE46C0CC208758A700F06172 /* main.m */,
 				CE46C0D320875EF000F06172 /* HypnosisView.h */,
 				CE46C0D420875EF000F06172 /* HypnosisView.m */,
+				CE46C0D62087737500F06172 /* logo.png */,
 			);
 			path = Hypnos;
 			sourceTree = "<group>";
@@ -127,6 +130,7 @@
 			files = (
 				CE46C0C7208758A700F06172 /* Assets.xcassets in Resources */,
 				CE46C0CA208758A700F06172 /* LaunchScreen.storyboard in Resources */,
+				CE46C0D72087737500F06172 /* logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

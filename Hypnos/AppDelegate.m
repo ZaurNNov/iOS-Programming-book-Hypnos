@@ -36,6 +36,7 @@
 //    secondView.backgroundColor = [UIColor brownColor];
 ////    [self.window addSubview:secondView];
 //    [firstView addSubview:secondView];
+        
     
     self.window.backgroundColor = [UIColor yellowColor];
     [self.window makeKeyAndVisible];

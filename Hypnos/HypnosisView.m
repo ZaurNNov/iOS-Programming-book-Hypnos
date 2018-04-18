@@ -20,6 +20,7 @@
     // Figure out the center of the bounds rectangle
     CGPoint center = CGPointMake((bounds.origin.x + bounds.size.width / 2), (bounds.origin.y + bounds.size.height / 2));
     
+    
     // Radius for figure
     /* // Drawing concentric circles
     CGFloat radius = (MIN(bounds.size.width, bounds.size.height) / 2.0);
@@ -52,6 +53,20 @@
     [path stroke];
     
     
+    // Bronze Challenge: Draw an Image
+    
+    UIImage *logoImage = [UIImage imageNamed:@"logo.png"];
+    // Image bounds - is 1/3 origin bounds
+    CGRect logoImageRect;
+    logoImageRect.origin.x = bounds.origin.x + bounds.size.width / 4;
+    logoImageRect.origin.y = bounds.origin.y + bounds.size.height / 4;
+    
+    // Image size = 1/3 origin bounds
+    logoImageRect.size.width = bounds.size.width / 2;
+    logoImageRect.size.height = bounds.size.height / 2;
+    
+    [logoImage drawInRect:logoImageRect];
+    //////////////////////////////////////
 }
 
 -(instancetype)initWithFrame:(CGRect)frame {
@@ -63,8 +78,6 @@
     
     return self;
 }
-
-
 
 
 @end
