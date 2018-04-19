@@ -8,11 +8,16 @@
 
 #import "HypnosisView.h"
 
+@interface HypnosisView ()
+
+@property (strong, nonatomic) UIColor *circleColor;
+
+
+@end
+
 @implementation HypnosisView
 
 
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
     // Drawing code
     CGRect bounds = self.bounds;
@@ -47,13 +52,16 @@
     }
     
     path.lineWidth = 10;
-    [[UIColor lightGrayColor] setStroke];
+    
+    // [[UIColor lightGrayColor] setStroke];
+    [self.circleColor setStroke];
     
     // draw line with path
     [path stroke];
     
     //////////////////////////////////////
     // Bronze Challenge: Draw an Image
+    /*
     
     UIImage *logoImage = [UIImage imageNamed:@"logo.png"];
     // Image bounds - is 1/4 origin bounds
@@ -66,7 +74,11 @@
     logoImageRect.size.height = bounds.size.height / 2;
     
     [logoImage drawInRect:logoImageRect];
+     */
     //////////////////////////////////////
+    
+    //////////////////////////////////////
+    // Gold Challenge: Shadows and Gradients
 }
 
 -(instancetype)initWithFrame:(CGRect)frame {
@@ -74,9 +86,29 @@
     if (self) {
         // all override
         self.backgroundColor = [UIColor clearColor];
+        self.circleColor = [UIColor lightGrayColor];
     }
     
     return self;
+}
+
+// When a finger touches the screen
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+//    NSLog(@"touched");
+    
+    // Get 3 random numders for RGB color
+    CGFloat red = (arc4random() % 100) / 100.0;
+    CGFloat green = (arc4random() % 100) / 100.0;
+    CGFloat blue = (arc4random() % 100) / 100.0;
+    
+    UIColor *randColor = [UIColor colorWithRed:red green:green blue:blue alpha:1.0];
+    
+    self.circleColor = randColor;
+}
+
+- (void)setCircleColor:(UIColor *)circleColor {
+    _circleColor = circleColor;
+    [self setNeedsDisplay];
 }
 
 

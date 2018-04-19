@@ -18,17 +18,49 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
+        // Override point for customization after application launch.//Generic way to make root view controller;
     self.window.rootViewController = [[UIViewController alloc] init];
     
     // 1
     /* //bounds vs. frame
     CGRect firstFrame = CGRectMake(160, 240, 100, 150);
      */
+    
+    // 5 Add ScrollView
+    /*
     CGRect firstFrame = self.window.bounds;
     HypnosisView *firstView = [[HypnosisView alloc] initWithFrame:firstFrame];
-//    firstView.backgroundColor = [UIColor yellowColor];
-    [self.window addSubview:firstView];
+    //[self.window addSubview:firstView]; //touch not work
+    [self.window.rootViewController.view addSubview:firstView]; //touch work!!!
+     */
+    
+    // Create CGRects for frames
+    CGRect screenRect = self.window.bounds;
+    CGRect bigRect = screenRect;
+    bigRect.size.width *= 2.0;
+    //bigRect.size.height *= 2.0;
+    
+    // Create a screen-sized scroll view and it to the window
+    UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:screenRect];
+    scrollView.pagingEnabled = YES;
+    [self.window.rootViewController.view addSubview:scrollView]; //touch work!!!
+    
+    //HypnosisView *hypnosisView = [[HypnosisView alloc]initWithFrame:bigRect];
+    // Create a screen-sized hypnosis view and add it to the scroll view
+    HypnosisView *hypnosisView = [[HypnosisView alloc]initWithFrame:screenRect];
+    [scrollView addSubview:hypnosisView];
+    
+    // Add second screen-sized hypno view just off screen to the right
+    screenRect.origin.x += screenRect.size.width;
+    HypnosisView *anotherView = [[HypnosisView alloc]initWithFrame:screenRect];
+    [scrollView addSubview:anotherView];
+
+    // Tell the scroll view how big its content area is
+//    scrollView.contentSize = bigRect.size;
+    
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+    return YES;
     
 //    // 2
 //    CGRect secondFrame = CGRectMake(20, 30, 50, 50);
@@ -36,11 +68,6 @@
 //    secondView.backgroundColor = [UIColor brownColor];
 ////    [self.window addSubview:secondView];
 //    [firstView addSubview:secondView];
-        
-    
-    self.window.backgroundColor = [UIColor yellowColor];
-    [self.window makeKeyAndVisible];
-    return YES;
 }
 
 
