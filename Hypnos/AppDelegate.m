@@ -9,7 +9,9 @@
 #import "AppDelegate.h"
 #import "HypnosisView.h"
 
-@interface AppDelegate ()
+@interface AppDelegate () <UIScrollViewDelegate>
+
+@property (nonatomic, strong) HypnosisView *hyView;
 
 @end
 
@@ -21,29 +23,41 @@
     self.window.rootViewController = [[UIViewController alloc] init];
     
     // Create CGRects for frames
-    CGRect screenRect = self.window.bounds;
-    CGRect bigRect = screenRect;
-    bigRect.size.width *= 2.0;
-    //bigRect.size.height *= 2.0;
+    CGRect frame = [UIScreen mainScreen].bounds;
+    CGRect screenRect = frame;
+    CGRect scrollRect = screenRect;
     
-    // Create a screen-sized scroll view and it to the window
-    UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:screenRect];
-    scrollView.pagingEnabled = YES;
-    [self.window.rootViewController.view addSubview:scrollView]; //touch work!!!
-
-    // Create a screen-sized hypnosis view and add it to the scroll view
-    HypnosisView *hypnosisView = [[HypnosisView alloc]initWithFrame:screenRect];
-    [scrollView addSubview:hypnosisView];
+    scrollRect.size.width *= 2.0;
+    scrollRect.size.height *= 2.0;
     
-    // Add second screen-sized hypno view just off screen to the right
-    screenRect.origin.x += screenRect.size.width;
-    HypnosisView *anotherView = [[HypnosisView alloc]initWithFrame:screenRect];
-    [scrollView addSubview:anotherView];
+    UIScrollView * scrollZoom = [[UIScrollView alloc] initWithFrame:screenRect];
+    scrollZoom.pagingEnabled = NO;
+    [self.window addSubview:scrollZoom];
+    
+    // create big
+    self.hyView = [[HypnosisView alloc] initWithFrame:scrollRect];
+    [scrollZoom addSubview:self.hyView];
+    
+    //tell the scroll view how big is the content size, so it will be possible to scroll the view
+    scrollZoom.contentSize = scrollRect.size;
+    
+    //set the UIScrollView minimum and maximum zoom
+    scrollZoom.minimumZoomScale = 0.3;
+    scrollZoom.maximumZoomScale = 3.0;
+    //making a delegate
+    scrollZoom.delegate = self;
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
-    
+}
+
+-(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    return self.hyView;
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    NSLog(@"scroll working!");
 }
 
 @end
