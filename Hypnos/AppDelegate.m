@@ -32,7 +32,8 @@
     
     UIScrollView * scrollZoom = [[UIScrollView alloc] initWithFrame:screenRect];
     scrollZoom.pagingEnabled = NO;
-    [self.window addSubview:scrollZoom];
+//    [self.window addSubview:scrollZoom];
+    self.window.rootViewController.view = scrollZoom;
     
     // create big
     self.hyView = [[HypnosisView alloc] initWithFrame:scrollRect];
@@ -42,7 +43,7 @@
     scrollZoom.contentSize = scrollRect.size;
     
     //set the UIScrollView minimum and maximum zoom
-    scrollZoom.minimumZoomScale = 0.3;
+    scrollZoom.minimumZoomScale = 0.5;
     scrollZoom.maximumZoomScale = 3.0;
     //making a delegate
     scrollZoom.delegate = self;
